@@ -56,7 +56,8 @@ const Disperse = () => {
       const key = obj.key;
       const value = obj.value;
       if (combinedObject[key] !== undefined) {
-        combinedObject[key] += value;
+        let temp = Number(value) + Number(combinedObject[key]);
+        combinedObject[key] = temp.toString();
       } else {
         combinedObject[key] = value;
       }
@@ -114,9 +115,13 @@ const Disperse = () => {
         <div className="text-red-400 flex items-center justify-between mt-5">
           <div>Duplicated</div>
           <div className="flex  items-center gap-2 ">
-            <span onClick={keepFirst}>Keep the first one</span>
+            <span className="cursor-pointer" onClick={keepFirst}>
+              Keep the first one
+            </span>
             <div className="w-[2px] h-4 bg-red-400"></div>
-            <span onClick={combineDuplicateHashes}>Combine Balance</span>
+            <span className="cursor-pointer" onClick={combineDuplicateHashes}>
+              Combine Balance
+            </span>
           </div>
         </div>
       )}
