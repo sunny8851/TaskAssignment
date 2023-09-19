@@ -36,14 +36,9 @@ const Disperse = () => {
           return [...pre, { key: line[0], value: line[1], char: " " }];
         });
       }
-
+      console.log(line);
       let isTrue = /[^0-9]/g.test(line[1]);
-      if (isTrue) {
-        amountErrorMessage.push(`Line ${i + 1} wrong amount `);
-        setErrorMessage((newErrorMessage) => {
-          return [...newErrorMessage, `Line ${i + 1} wrong amount `];
-        });
-      } else if (line[0] < 0) {
+      if (isTrue || line[1] < 0 || line[1].length == 0) {
         amountErrorMessage.push(`Line ${i + 1} wrong amount `);
         setErrorMessage((newErrorMessage) => {
           return [...newErrorMessage, `Line ${i + 1} wrong amount `];
