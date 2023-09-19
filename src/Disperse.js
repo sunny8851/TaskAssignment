@@ -12,6 +12,8 @@ const Disperse = () => {
     setDuplicateErrorMessage([]);
     const text = inputText.split("\n");
     let newArr = [];
+    let amountErrorMessage = [];
+    let duplicatedErrorMessage = [];
     for (let i = 0; i < text.length; i++) {
       let line;
       //check for amount errors
@@ -37,10 +39,12 @@ const Disperse = () => {
 
       let isTrue = /[^0-9]/g.test(line[1]);
       if (isTrue) {
+        amountErrorMessage.push(`Line ${i + 1} wrong amount `);
         setErrorMessage((newErrorMessage) => {
           return [...newErrorMessage, `Line ${i + 1} wrong amount `];
         });
       } else if (line[0] < 0) {
+        amountErrorMessage.push(`Line ${i + 1} wrong amount `);
         setErrorMessage((newErrorMessage) => {
           return [...newErrorMessage, `Line ${i + 1} wrong amount `];
         });
@@ -58,10 +62,14 @@ const Disperse = () => {
       }
       b.add(newArr[i].key);
       if (a.length > 1) {
+        duplicatedErrorMessage.push(`${newArr[i].key} ${a.toString()} `);
         setDuplicateErrorMessage((newErrorMessage) => {
           return [...newErrorMessage, `${newArr[i].key} ${a.toString()} `];
         });
       }
+    }
+    if (amountErrorMessage.length == 0 && duplicatedErrorMessage.length == 0) {
+      alert("success");
     }
   };
   //combine all amount
