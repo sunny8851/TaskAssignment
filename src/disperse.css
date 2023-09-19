@@ -1,0 +1,34 @@
+.code-editor-container {
+  display: flex;
+  overflow: auto;
+  height: 300px;
+  /* border: 1px solid #ccc; */
+}
+
+.line-number-container {
+  width: 30px; /* Adjust the width as needed */
+  /* background-color: #f0f0f0; */
+  overflow-y: scroll;
+  padding: 5px;
+  padding-top: 5px;
+}
+.line-number-container::-webkit-scrollbar {
+  display: none;
+}
+.line-number {
+  text-align: right;
+  color: #888;
+  font-size: 10px;
+  margin-bottom: 5px;
+}
+
+.code-textarea {
+  flex: 1;
+  border: none;
+  padding: 5px;
+  font-weight: 600;
+  font-family: monospace;
+  resize: none;
+  outline: none;
+  overflow-y: scroll;
+}
